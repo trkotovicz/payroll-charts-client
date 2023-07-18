@@ -6,6 +6,10 @@ import TurnoverChart from '../components/Turnover';
 function Charts() {
   const [headcount, setHeadCount] = useState(null);
   const [turnover, setTurnover] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingHeadcount, setIsLoadingHeadcount] = useState(true);
+  const [isLoadingTurnover, setIsLoadingTurnover] = useState(true);
+
   const location = useLocation();
   const email = location.state.email;
 
@@ -19,6 +23,10 @@ function Charts() {
       console.error('Ocorreu um erro: ', error);
     }
   }, []);
+
+  const checkLoadingStatus = () => {
+    if (!isLoadingHeadcount && !isLoadingTurnover) setIsLoading(false);
+  }
 
   const fetchHeadcount = async () => {
     // const response = await fetch(`${BASE_URL}headcount/${email}`);
@@ -192,6 +200,8 @@ function Charts() {
       ]
     }
     setHeadCount(data);
+    setIsLoadingHeadcount(false);
+    checkLoadingStatus();
   }
 
   const fetchTurnover = async () => {
@@ -378,6 +388,14 @@ function Charts() {
       ]
     }
     setTurnover(data);
+    setIsLoadingTurnover(false);
+    checkLoadingStatus();
+  }
+
+  if (isLoading) {
+    return (
+      <div>Carregando...</div>
+    );
   }
 
   return (
