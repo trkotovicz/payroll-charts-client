@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import HeadcountChart from '../components/HeadcountChart';
+import TurnoverChart from '../components/Turnover';
 
 function Charts() {
   const [headcount, setHeadCount] = useState(null);
@@ -197,48 +198,183 @@ function Charts() {
     // const response = await fetch(`${BASE_URL}turnover/${email}`);
     // const data = await response.json();
     const data = {
-      turnover: [
-        {month: '2021-03', value: 0},
-        {month: '2021-04', value: 0},
-        {month: '2021-05', value: 0},
-        {month: '2021-06', value: 0.047619047619047616},
-        {month: '2021-07', value: 0.125},
-        {month: '2021-08', value: 0},
-        {month: '2021-09', value: 0.12},
-        {month: '2021-10', value: 0},
-        {month: '2021-11', value: 0},
-        {month: '2021-12', value: 0.041666666666666664},
-        {month: '2022-01', value: 0},
-        {month: '2022-02', value: 0},
-        {month: '2022-03', value: 0.043478260869565216},
-        {month: '2022-04', value: 0},
-        {month: '2022-05', value: 0},
-        {month: '2022-06', value: 0},
-        {month: '2022-07', value: 0},
-        {month: '2022-08', value: 0},
-        {month: '2022-09', value: 0},
-        {month: '2022-10', value: 0},
-        {month: '2022-11', value: 0},
-        {month: '2022-12', value: 0},
-        {month: '2023-01', value: 0},
-        {month: '2023-02', value: 0},
-        {month: '2023-03', value: 0},
-        {month: '2023-04', value: 0},
-        {month: '2023-05', value: 0},
-        {month: '2023-06', value: 0},
-        {month: '2023-07', value: 0},
-        {month: '2020-08', value: 0},
-        {month: '2020-09', value: 0},
-        {month: '2020-10', value: 0},
-        {month: '2020-11', value: 0},
-        {month: '2020-12', value: 0},
-        {month: '2021-01', value: 0},
-        {month: '2021-02', value: 0.07692307692307693},
-        {month: '2020-03', value: 0},
-        {month: '2020-04', value: 0},
-        {month: '2020-05', value: 0},
-        {month: '2020-06', value: 0},
-        {month: '2020-07', value: 0},
+      "turnover": [
+        {
+          "month": "2022-08",
+          "value": 0.014705882352941176
+        },
+        {
+          "month": "2022-09",
+          "value": 0.014285714285714285
+        },
+        {
+          "month": "2022-10",
+          "value": 0.013888888888888888
+        },
+        {
+          "month": "2022-11",
+          "value": 0
+        },
+        {
+          "month": "2022-12",
+          "value": 0
+        },
+        {
+          "month": "2023-01",
+          "value": 0
+        },
+        {
+          "month": "2023-02",
+          "value": 0.014084507042253521
+        },
+        {
+          "month": "2023-03",
+          "value": 0.02857142857142857
+        },
+        {
+          "month": "2023-04",
+          "value": 0.014705882352941176
+        },
+        {
+          "month": "2023-05",
+          "value": 0
+        },
+        {
+          "month": "2023-06",
+          "value": 0
+        },
+        {
+          "month": "2023-07",
+          "value": 0
+        },
+        {
+          "month": "2021-08",
+          "value": 0
+        },
+        {
+          "month": "2021-09",
+          "value": 0.05660377358490566
+        },
+        {
+          "month": "2021-10",
+          "value": 0.01818181818181818
+        },
+        {
+          "month": "2021-11",
+          "value": 0
+        },
+        {
+          "month": "2021-12",
+          "value": 0.016129032258064516
+        },
+        {
+          "month": "2022-01",
+          "value": 0.03225806451612903
+        },
+        {
+          "month": "2022-02",
+          "value": 0.016129032258064516
+        },
+        {
+          "month": "2022-03",
+          "value": 0.04838709677419355
+        },
+        {
+          "month": "2022-04",
+          "value": 0.03225806451612903
+        },
+        {
+          "month": "2022-05",
+          "value": 0.016129032258064516
+        },
+        {
+          "month": "2022-06",
+          "value": 0
+        },
+        {
+          "month": "2022-07",
+          "value": 0.029850746268656716
+        },
+        {
+          "month": "2020-01",
+          "value": 0
+        },
+        {
+          "month": "2020-02",
+          "value": 0
+        },
+        {
+          "month": "2020-03",
+          "value": 0
+        },
+        {
+          "month": "2020-04",
+          "value": 0
+        },
+        {
+          "month": "2020-05",
+          "value": 0
+        },
+        {
+          "month": "2020-06",
+          "value": 0
+        },
+        {
+          "month": "2020-07",
+          "value": 0
+        },
+        {
+          "month": "2020-08",
+          "value": 0
+        },
+        {
+          "month": "2020-09",
+          "value": 0
+        },
+        {
+          "month": "2020-10",
+          "value": 0
+        },
+        {
+          "month": "2020-11",
+          "value": 0
+        },
+        {
+          "month": "2020-12",
+          "value": 0
+        },
+        {
+          "month": "2021-01",
+          "value": 0
+        },
+        {
+          "month": "2021-02",
+          "value": 0.06666666666666667
+        },
+        {
+          "month": "2021-03",
+          "value": 0.02857142857142857
+        },
+        {
+          "month": "2021-04",
+          "value": 0
+        },
+        {
+          "month": "2021-05",
+          "value": 0
+        },
+        {
+          "month": "2021-06",
+          "value": 0.047619047619047616
+        },
+        {
+          "month": "2021-07",
+          "value": 0.08888888888888889
+        },
+        {
+          "month": "2023-08",
+          "value": 1
+        }
       ]
     }
     setTurnover(data);
@@ -252,6 +388,9 @@ function Charts() {
       <HeadcountChart data={ headcount } />
 
       <h2>Turnover</h2>
+
+      <TurnoverChart data={ turnover } />
+
     </div>
   );
 }

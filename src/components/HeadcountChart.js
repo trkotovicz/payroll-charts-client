@@ -1,9 +1,6 @@
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
 
-
-
-
 function HeadcountChart({ data }) {
   if (!data) return null;
 
@@ -75,16 +72,16 @@ function HeadcountChart({ data }) {
           legendOffset: -40,
         }}
         enablePoints={true}
-        pointSize={12}
+        pointSize={10}
         pointColor="#ffffff"
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor', modifiers: [] }}
         enableGridX={true}
         enableGridY={true}
         useMesh={true}
-        colors={{ scheme: 'purpleRed_green' }}
-        // colors={{ scheme: 'spectral' }}
-        lineWidth={4}
+        // colors={{ scheme: 'purpleRed_green' }}
+        colors={{ scheme: 'category10' }}
+        lineWidth={2}
         enableArea={true}
         legends={[
           {
