@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import HeadcountChart from '../components/HeadcountChart';
 import TurnoverChart from '../components/Turnover';
+import { Box, Button, Container, Paper, Typography } from '@mui/material';
 
 function Charts() {
   const [headcount, setHeadCount] = useState(null);
@@ -9,7 +10,7 @@ function Charts() {
   const [isLoading, setIsLoading] = useState(null);
   const [isLoadingHeadcount, setIsLoadingHeadcount] = useState(true);
   const [isLoadingTurnover, setIsLoadingTurnover] = useState(true);
-
+  const navigate = useNavigate();
   const location = useLocation();
   const email = location.state.email;
 
@@ -396,26 +397,38 @@ function Charts() {
   }
 
   return (
-    <>
-      <h1>{email}</h1>
-      <h1>Payroll Charts</h1>
+    <Container sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <Button variant="text" sx={{ mt: 1, alignSelf: 'flex-start' }}
+        onClick={ () => navigate('/') }>
+        Voltar
+      </Button>
+      
+      <Typography variant='h2' sx={{ my: 4, color: 'primary.main', textAlign: 'center' }}>
+        Payroll Charts
+      </Typography>
       
       { isLoading
         ? <div>Carregando...</div>
         : (
         <div>
-          <h2>Headcount</h2>
+          <Paper elevation={4} sx={{ my: 1, background: '#f8f9fa', alignItems: 'center', justifyContent: 'center' }}>
+            <Box sx={{ my: 2, p: 1 }}>
+              <Typography variant='h4' sx={{ mt: 1, textAlign: 'center' }}>Headcount</Typography>
+              <HeadcountChart data={ headcount } />
+            </Box>
+          </Paper>
 
-          <HeadcountChart data={ headcount } />
-
-          <h2>Turnover</h2>
-
-          <TurnoverChart data={ turnover } />
-
+          <Paper elevation={4} sx={{ my: 1, background: '#f8f9fa', alignItems: 'center', justifyContent: 'center' }}>
+            <Box sx={{ my: 2, p: 1 }}>
+              <Typography variant='h4' sx={{ mt: 1, textAlign: 'center' }}>Turnover</Typography>
+              <TurnoverChart data={ turnover } />
+            </Box>
+          </Paper>
         </div>
         )
       }
-    </>
+
+    </Container>
   );
 }
 
