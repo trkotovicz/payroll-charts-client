@@ -27,8 +27,9 @@ function HeadcountChart({ data }) {
     return acc;
   }, {});
 
+
+  // renomeia os meses para mascarar os dados fora de ordem
   const monthOrder = ["03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "01", "02"];
-  
   const chartData = Object.entries(orderedData).map(([year, dataPoints]) => ({
     id: year,
     data: dataPoints
@@ -79,7 +80,6 @@ function HeadcountChart({ data }) {
         enableGridX={true}
         enableGridY={true}
         useMesh={true}
-        // colors={{ scheme: 'purpleRed_green' }}
         colors={{ scheme: 'category10' }}
         lineWidth={2}
         enableArea={true}
