@@ -6,26 +6,29 @@ import TurnoverChart from '../components/Turnover';
 function Charts() {
   const [headcount, setHeadCount] = useState(null);
   const [turnover, setTurnover] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(null);
   const [isLoadingHeadcount, setIsLoadingHeadcount] = useState(true);
   const [isLoadingTurnover, setIsLoadingTurnover] = useState(true);
 
   const location = useLocation();
   const email = location.state.email;
 
-  // const BASE_URL = 'https://z64iardwce.execute-api.us-east-1.amazonaws.com/dev/api/v1/payroll/';
+  const BASE_URL = 'https://z64iardwce.execute-api.us-east-1.amazonaws.com/dev/api/v1/payroll/';
 
   useEffect(() => {
     try {
       fetchHeadcount();
       fetchTurnover();
+      checkLoadingStatus();
     } catch (error) {
       console.error('Ocorreu um erro: ', error);
     }
   }, []);
 
   const checkLoadingStatus = () => {
-    if (!isLoadingHeadcount && !isLoadingTurnover) setIsLoading(false);
+    if (!isLoadingHeadcount && !isLoadingTurnover) {
+      setIsLoading(false)
+    }
   }
 
   const fetchHeadcount = async () => {
@@ -392,25 +395,27 @@ function Charts() {
     checkLoadingStatus();
   }
 
-  if (isLoading) {
-    return (
-      <div>Carregando...</div>
-    );
-  }
-
   return (
-    <div>
+    <>
       <h1>{email}</h1>
       <h1>Payroll Charts</h1>
-      <h2>Headcount</h2>
+      
+      { isLoading
+        ? <div>Carregando...</div>
+        : (
+        <div>
+          <h2>Headcount</h2>
 
-      <HeadcountChart data={ headcount } />
+          <HeadcountChart data={ headcount } />
 
-      <h2>Turnover</h2>
+          <h2>Turnover</h2>
 
-      <TurnoverChart data={ turnover } />
+          <TurnoverChart data={ turnover } />
 
-    </div>
+        </div>
+        )
+      }
+    </>
   );
 }
 
