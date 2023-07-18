@@ -14,21 +14,18 @@ function TurnoverChart({ data }) {
     organizedData[year].push({ month: monthNumber, value });
   });
   
-  // ordena os meses
   Object.values(organizedData).forEach((element) => {
     element.sort((a, b) => parseInt(a.month) - parseInt(b.month));
   });
-  // Ordena os anos
-  const sortedData = Object.entries(organizedData).sort((a, b) => parseInt(a[0]) - parseInt(b[0]));
 
-  // Cria um novo objeto com os anos ordenados
+  const sortedData = Object.entries(organizedData).sort((a, b) => parseInt(a[0]) - parseInt(b[0]));
   const orderedData = sortedData.reduce((acc, [year, data]) => {
     acc[year] = data;
     return acc;
   }, {});
 
   const monthOrder = ["03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "01", "02"];
-  
+
   const chartData = Object.entries(orderedData).map(([year, dataPoints]) => ({
     id: year,
     data: dataPoints

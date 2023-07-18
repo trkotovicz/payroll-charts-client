@@ -49,7 +49,7 @@ function HeadcountChart({ data }) {
           useUTC: false,
           precision: 'month',
         }}
-        yScale={{ type: "linear", min: 0, max: 40 }}
+        yScale={{ type: "linear", min: 0, max: "auto" }}
         curve="monotoneX"
         axisTop={null}
         axisRight={null}
