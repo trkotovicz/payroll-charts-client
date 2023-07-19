@@ -1,7 +1,10 @@
 import SearchIcon from '@mui/icons-material/Search';
-import { Button, Container, Icon, Paper, TextField, Typography } from '@mui/material';
+import { Box, Button, Card, Container, Icon, Link, Paper, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import analyticsImage from '../img/analytics.PNG';
+import Footer from '../components/Footer';
 
 function Home() {
   const [email, setEmail] = useState('');
@@ -21,42 +24,59 @@ function Home() {
   };
 
   return (
-     <Container sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-      <Typography variant='h1' sx={{ my: 4, color: 'primary.main', textAlign: 'center' }}>
-        Payroll Charts
-      </Typography>
+    <>
+      <Navbar />
+      <Container sx={{ display: 'flex', flexDirection: {xs: 'column', md: 'row'}, justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
+        <Box>
+        <Box sx={{ mt: { xs: 8, md: 'none' }, display: 'flex', alignItems: 'flex-start', textAlign: 'start', flexDirection: 'column' }}>
+          <Typography variant='h2' sx={{ my: 4, color: 'primary.main', textAlign: 'center' }}>
+            People Analytics
+          </Typography>
+          <Typography variant='h6'>
+            Dashboards dinâmicos para monitoriar e atuar em todos os indicadores chave do RH: de controle de headcount, turnover e custos a índices de diversidade e inclusão.
+          </Typography>
+        </Box>
 
-      <Paper elevation={4} sx={{ p: 8, my: 8, width: '80%', background: '#f8f9fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          {showHidden ? (
-            <TextField
-              error
-              id="standard-error-helper-text"
-              type="email"
-              label="Email"
-              helperText="Digite o email para busca"
-              value={email}
-              onChange={({ target }) => setEmail(target.value)}
-              sx={{ flex: '0.7', m: 2 }}
-            />
-          ) : (
-            <TextField
-              variant="outlined"
-              type="email"
-              label="Digite o email para busca"
-              value={email}
-              onChange={({ target }) => setEmail(target.value)}
-              sx={{ flex: '0.7', m: 2 }}
-            />
-          )}
+        <Box sx={{ mt: 2, width: '100%', display: 'flex', justifySelf: 'flex-start', alignItems: 'center', justifyContent: 'flex-start' }}>
+            {showHidden ? (
+              <TextField
+                error
+                id="standard-error-helper-text"
+                type="email"
+                label="Digite o email para busca"
+                helperText="Digite um email válido"
+                value={email}
+                onChange={({ target }) => setEmail(target.value)}
+                sx={{ flex: '0.7', mr: 2 }}
+              />
+            ) : (
+              <TextField
+                variant="outlined"
+                type="email"
+                label="Digite o email para busca"
+                value={email}
+                onChange={({ target }) => setEmail(target.value)}
+                sx={{ flex: '0.7', mr: 2 }}
+              />
+            )}
 
-          <Button variant='contained' sx={{ m: 2, p: 2, bgcolor: 'primary.light', textTransform: 'none', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }} onClick={handleSearch}>
-            <Icon>
-              <SearchIcon />
-            </Icon>
-          </Button>
-        </Paper>
+            <Button variant='contained' sx={{ m: 2, p: 2, bgcolor: 'primary.light', textTransform: 'none', fontWeight: 'bold', display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center' }} onClick={handleSearch}>
+              <Icon>
+                <SearchIcon />
+              </Icon>
+            </Button>
+          </Box>
 
-    </Container>
+        </Box>
+
+        <Box component='img' sx={{ mt: { xs: 6, md: 'none' }, ml: {xs: 'none', md: 2 }}}
+          src={analyticsImage} alt="analytics"
+        />
+
+      </Container>
+
+      <Footer />
+    </>
   );
 }
 
